@@ -1,10 +1,8 @@
 package com.example.currencyservice.service;
 
 
-import com.example.currencyservice.server.Currency;
-import com.example.currencyservice.server.DTO.CurrencyResponse;
-
-import static com.example.currencyservice.server.Currency.*;
+import com.example.currencyservice.Currency;
+import com.example.currencyservice.consumer.dto.CurrencyResponse;
 
 public class CurrencyService {
 

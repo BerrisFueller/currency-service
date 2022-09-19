@@ -1,6 +1,6 @@
-package com.example.currencyservice.server.DTO;
+package com.example.currencyservice.consumer.dto;
 
-import com.example.currencyservice.server.Currency;
+import com.example.currencyservice.Currency;
 import lombok.*;
 import lombok.experimental.Accessors;
 

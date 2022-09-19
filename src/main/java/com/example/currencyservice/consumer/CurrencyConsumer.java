@@ -1,7 +1,8 @@
-package com.example.currencyservice.server;
+package com.example.currencyservice.consumer;
 
-import com.example.currencyservice.server.DTO.CurrencyRequest;
-import com.example.currencyservice.server.DTO.CurrencyResponse;
+import com.example.currencyservice.Currency;
+import com.example.currencyservice.consumer.dto.CurrencyRequest;
+import com.example.currencyservice.consumer.dto.CurrencyResponse;
 import com.example.currencyservice.service.CurrencyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Slf4j
-public class CurrencyServer {
+public class CurrencyConsumer {
 
     @Autowired
     CurrencyService currencyService;

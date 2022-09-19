@@ -1,4 +1,4 @@
-package com.example.currencyservice.server;
+package com.example.currencyservice;
 
 public enum Currency {
     EUR,

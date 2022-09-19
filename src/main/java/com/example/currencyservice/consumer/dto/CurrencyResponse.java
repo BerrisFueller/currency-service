@@ -1,4 +1,4 @@
-package com.example.currencyservice.server.DTO;
+package com.example.currencyservice.consumer.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
