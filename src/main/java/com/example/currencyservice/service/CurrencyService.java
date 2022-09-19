@@ -4,30 +4,32 @@ package com.example.currencyservice.service;
 import com.example.currencyservice.Currency;
 import com.example.currencyservice.consumer.dto.CurrencyResponse;
 
+import java.math.BigDecimal;
+
 public class CurrencyService {
 
-    public CurrencyResponse updatePriceToSelectedCurrency(int price, Currency currency){
-        return  new CurrencyResponse().setCurrencyResponse(requestedCurrency(currency) * price);
+    public CurrencyResponse updatePriceToSelectedCurrency(BigDecimal price, Currency currency){
+        return  new CurrencyResponse().setCurrencyResponse(requestedCurrency(currency).multiply(price));
 
     }
 
-    public double requestedCurrency(Currency currency) {
+    public BigDecimal requestedCurrency(Currency currency) {
 
         switch (currency){
             case USD -> {
-                return 1;
+                return new BigDecimal("1");
             }
             case EUR -> {
-                return 1.2;
+                return new BigDecimal("1.2");
             }
             case YEN -> {
-                return 130.5;
+                return new BigDecimal("130.5");
             }
             case PHP -> {
-                return 52.44;
+                return new BigDecimal("52.44");
             }
             case ISK -> {
-                return 138.85;
+                return new BigDecimal("138.85");
             }
             default ->    throw new IllegalStateException("UNKOWN CURRENCY" + currency);
         }
