@@ -1,7 +1,10 @@
 package com.example.currencyservice.server;
 
+import com.example.currencyservice.server.DTO.CurrencyRequest;
+import com.example.currencyservice.server.DTO.CurrencyResponse;
 import com.example.currencyservice.service.CurrencyService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -11,7 +14,8 @@ public class CurrencyServer {
     @Autowired
     CurrencyService currencyService;
 
-    public double ConversionOfCurrency(CurrencyRequest currencyRequest){
+    @RabbitListener(queues = "${queue.currency}")
+    public CurrencyResponse ConversionOfCurrency(CurrencyRequest currencyRequest){
 
     int receivedPrice = -1 ;
     Currency wantedCurrency = Currency.NULL;

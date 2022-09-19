@@ -2,13 +2,14 @@ package com.example.currencyservice.service;
 
 
 import com.example.currencyservice.server.Currency;
+import com.example.currencyservice.server.DTO.CurrencyResponse;
 
 import static com.example.currencyservice.server.Currency.*;
 
 public class CurrencyService {
 
-    public double updatePriceToSelectedCurrency(int price,Currency currency){
-        return requestedCurrency(currency) * price;
+    public CurrencyResponse updatePriceToSelectedCurrency(int price, Currency currency){
+        return  new CurrencyResponse().setCurrencyResponse(requestedCurrency(currency) * price);
 
     }
 
