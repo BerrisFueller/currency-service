@@ -2,6 +2,7 @@ package com.example.currencyservice.configuration;
 
 
 
+import com.example.currencyservice.consumer.CurrencyConsumer;
 import com.example.currencyservice.service.CurrencyService;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -25,14 +26,19 @@ public class RabbitMQConfiguration {
     @Value("${xchange.name}")
     private String exchangeName;
 
+
+    @Bean
+    public CurrencyConsumer currencyConsumer() {
+        return new CurrencyConsumer();
+    }
     @Bean
     public DirectExchange directExchange(){
         return new DirectExchange(exchangeName);
     }
 
     @Bean
-    public Binding binding (){
-        return BindingBuilder.bind(queue()).to(directExchange()).with(routingKey);
+    public Binding binding (DirectExchange directExchange, Queue currencyQueue){
+        return BindingBuilder.bind(currencyQueue).to(directExchange).with(routingKey);
     }
 
     @Bean
