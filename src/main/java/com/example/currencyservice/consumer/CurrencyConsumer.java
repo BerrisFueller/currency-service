@@ -15,11 +15,12 @@ public class CurrencyConsumer {
     @Autowired
     CurrencyService currencyService;
 
+    int receivedPrice;
+    Currency wantedCurrency;
+
     @RabbitListener(queues = "${queue.currency}")
     public CurrencyResponse ConversionOfCurrency(CurrencyRequest currencyRequest){
 
-    int receivedPrice = -1 ;
-    Currency wantedCurrency = Currency.NULL;
 
     try {
         receivedPrice = currencyRequest.getPrice();

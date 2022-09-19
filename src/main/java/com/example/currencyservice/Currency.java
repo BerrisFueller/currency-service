@@ -5,7 +5,6 @@ public enum Currency {
     USD,
     YEN,
     ISK,
-    PHP,
-    NULL
+    PHP
 
 }
