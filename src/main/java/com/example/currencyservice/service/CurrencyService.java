@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class CurrencyService {
 
     public CurrencyResponse updatePriceToSelectedCurrency(BigDecimal price, Currency currency){
-        return  new CurrencyResponse().setCurrencyResponse(requestedCurrency(currency).multiply(price));
+        return  new CurrencyResponse().setPrice(requestedCurrency(currency).multiply(price));
 
     }
 

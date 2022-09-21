@@ -2,6 +2,7 @@ package com.example.currencyservice.consumer;
 
 import com.example.currencyservice.Currency;
 import com.example.currencyservice.consumer.dto.CurrencyRequest;
+import com.example.currencyservice.consumer.dto.CurrencyResponse;
 import com.example.currencyservice.service.CurrencyService;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class CurrencyConsumer {
     Currency wantedCurrency;
 
     @RabbitListener(queues = "${queue.currency}")
-    public String ConversionOfCurrency(Message message) {
+    public String conversionOfCurrency(Message message) {
 
         CurrencyRequest currencyRequest = new Gson()
                 .fromJson(new String(message.getBody(), StandardCharsets.UTF_8), CurrencyRequest.class);
@@ -34,7 +35,9 @@ public class CurrencyConsumer {
         } catch (IllegalArgumentException e) {
             log.error("Illegal REQUEST!" + e);
         }
-        return new Gson().toJson(currencyService.updatePriceToSelectedCurrency(receivedPrice, wantedCurrency));
+
+        CurrencyResponse response = currencyService.updatePriceToSelectedCurrency(receivedPrice, wantedCurrency);
+        return new Gson().toJson(response);
     }
 
 }
