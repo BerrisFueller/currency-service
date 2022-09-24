@@ -5,17 +5,19 @@ import com.example.currencyservice.Currency;
 import com.example.currencyservice.consumer.dto.CurrencyResponse;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class CurrencyService {
 
-    public CurrencyResponse updatePriceToSelectedCurrency(BigDecimal price, Currency currency){
-        return  new CurrencyResponse().setPrice(requestedCurrency(currency).multiply(price));
-
+    public CurrencyResponse updatePriceToSelectedCurrency(BigDecimal price, Currency currency) {
+        BigDecimal rawPrice = requestedCurrency(currency).multiply(price);
+        BigDecimal roundedPrice = rawPrice.setScale(2, RoundingMode.CEILING);
+        return new CurrencyResponse().setPrice(roundedPrice);
     }
 
     public BigDecimal requestedCurrency(Currency currency) {
 
-        switch (currency){
+        switch (currency) {
             case USD -> {
                 return new BigDecimal("1");
             }
@@ -31,7 +33,7 @@ public class CurrencyService {
             case ISK -> {
                 return new BigDecimal("138.85");
             }
-            default ->    throw new IllegalStateException("UNKOWN CURRENCY" + currency);
+            default -> throw new IllegalStateException("UNKOWN CURRENCY" + currency);
         }
     }
 }
