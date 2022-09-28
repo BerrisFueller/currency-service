@@ -18,7 +18,6 @@ class CurrencyServiceApplicationTests {
 
     @Test
     public void inEUR() {
-
         CurrencyResponse currencyResponse = currencyService.
                 updatePriceToSelectedCurrency(BigDecimal.valueOf(100), Currency.EUR);
 
@@ -29,8 +28,6 @@ class CurrencyServiceApplicationTests {
 
     @Test
     public void inPhp() {
-
-
         CurrencyResponse currencyResponse = currencyService
                 .updatePriceToSelectedCurrency(BigDecimal.valueOf(100), Currency.PHP);
 
@@ -41,8 +38,6 @@ class CurrencyServiceApplicationTests {
 
     @Test
     public void inIsk() {
-
-
         CurrencyResponse currencyResponse = currencyService.
                 updatePriceToSelectedCurrency(BigDecimal.valueOf(100), Currency.ISK);
 
@@ -53,8 +48,6 @@ class CurrencyServiceApplicationTests {
 
     @Test
     public void inYen() {
-
-
         CurrencyResponse currencyResponse = currencyService.
                 updatePriceToSelectedCurrency(BigDecimal.valueOf(100), Currency.YEN);
 
@@ -65,8 +58,6 @@ class CurrencyServiceApplicationTests {
 
     @Test
     public void inUSD() {
-
-
         CurrencyResponse currencyResponse = currencyService
                 .updatePriceToSelectedCurrency(BigDecimal.valueOf(120), Currency.USD);
 
